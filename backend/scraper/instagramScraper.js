@@ -13,7 +13,7 @@ async function scrapeInstagramProfile(username) {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36');
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await page.waitForSelector('body', { timeout: 60000 });
-    await page.waitForTimeout(Math.random() * 5000 + 2000); // Random delay to avoid detection
+    await new Promise(resolve => setTimeout(resolve, Math.random() * 5000 + 2000)); // Random delay to avoid detection
 
     const data = await page.evaluate(() => {
       const stats = document.querySelectorAll('header li span');
